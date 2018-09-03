@@ -1,0 +1,8 @@
+def addition_num(a,b):
+    return a+b
+
+def addition_str(str1,str2):
+    return str1+str2
+
+def multiply_num(a,b):
+    return a*b
