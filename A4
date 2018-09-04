@@ -1,0 +1,24 @@
+import math
+print("For equation ax^2+bx+c, ")
+a=float(input("\nEnter a : "))
+b=float(input("\nEnter b : "))
+c=float(input("\nEnter c : "))
+D=b*b-4*a*c
+
+if D<0:
+    #Imaginary Condition
+    Re=-b/(2*a)
+    Im=math.sqrt(-D)/(2*a)
+    print("\nImaginary Roots. Values = ",Re," + i(",Im,") and ",Re," - i(",Im,")")
+    
+elif D==0:
+    #Real and Equal
+    value1=-b/(2*a)
+    print("\nReal and Equal Roots. Value = ",value1)
+
+else:
+    #Real
+    sqD=math.sqrt(D)
+    value1=(-b-sqD)/(2*a)
+    value2=(-b+sqD)/(2*a)
+    print("\nReal Roots. Values = ",value1," & ",value2)
