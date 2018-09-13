@@ -1,24 +1,53 @@
+import cmath
 import math
-print("For equation ax^2+bx+c, ")
-a=float(input("\nEnter a : "))
-b=float(input("\nEnter b : "))
-c=float(input("\nEnter c : "))
-D=b*b-4*a*c
 
-if D<0:
-    #Imaginary Condition
-    Re=-b/(2*a)
-    Im=math.sqrt(-D)/(2*a)
-    print("\nImaginary Roots. Values = ",Re," + i(",Im,") and ",Re," - i(",Im,")")
+def main() :
+    coeff=[]
+    root=[]
+    input_coeff(coeff)
+    D = compute_roots(coeff,root)
+    output_roots(root=root,Discrim=D)
     
-elif D==0:
-    #Real and Equal
-    value1=-b/(2*a)
-    print("\nReal and Equal Roots. Value = ",value1)
 
-else:
-    #Real
-    sqD=math.sqrt(D)
-    value1=(-b-sqD)/(2*a)
-    value2=(-b+sqD)/(2*a)
-    print("\nReal Roots. Values = ",value1," & ",value2)
+def input_coeff(coeff=[]) :
+    print("For equation ax^2+bx+c, ")
+    while True:
+        coeff.append ( float(input("\nEnter a : ")))
+        if(coeff[0]!=0):
+            coeff.pop()
+            break
+        print("\nNot Quadratic if a=0")
+    
+    coeff.append( float(input("\nEnter b : ")) )
+    coeff.append( float(input("\nEnter c : ")) )
+    
+def compute_roots(coeff=[], root=[]) :
+    a=coeff[0]
+    b=coeff[1]
+    c=coeff[2]
+    
+    D=b*b-4*c*a
+    temp1=-b/(2*a)
+
+    if D>0 :
+        temp2 = math.sqrt(D) / (2*a)
+        #math.sqrt instead of cmath.sqrt so that result is not of the form root + 0j 0
+
+    elif D<0 :
+        temp2 = cmath.sqrt(D) / (2*a)
+        
+    root.append(temp1-temp2)
+    root.append(temp1+temp2)
+    return D
+
+def output_roots(Discrim,root=[]) :
+
+    if Discrim!=0 :
+        print("\nRoot 1 = ",root[0])
+        print("\nRoot 2 = ",root[1])
+
+    else :
+        print("\nRoot = ",root[0])
+
+
+main()
