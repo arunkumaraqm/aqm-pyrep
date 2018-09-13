@@ -1,5 +1,6 @@
 import cmath
 import math
+import sys
 
 def main() :
     coeff=[]
@@ -9,17 +10,17 @@ def main() :
     output_roots(root=root,Discrim=D)
     
 
-def input_coeff(coeff=[]) :
+def input_coeff(coeff=[]) : #DOUBT - Not sure how else to pass a,b,c by reference
     print("For equation ax^2+bx+c, ")
-    while True:
-        coeff.append ( float(input("\nEnter a : ")))
-        if(coeff[0]!=0):
-            coeff.pop()
-            break
-        print("\nNot Quadratic if a=0")
+    coeff.append( float(input("\nEnter a : ")))
     
-    coeff.append( float(input("\nEnter b : ")) )
-    coeff.append( float(input("\nEnter c : ")) )
+    if coeff[0]==0 :        #a=0 Condition
+        print("\nNot quadratic if a=0")
+        input()
+        sys.exit()
+        
+    coeff.append( float(input("\nEnter b : ")))
+    coeff.append( float(input("\nEnter c : ")))
     
 def compute_roots(coeff=[], root=[]) :
     a=coeff[0]
@@ -31,10 +32,13 @@ def compute_roots(coeff=[], root=[]) :
 
     if D>0 :
         temp2 = math.sqrt(D) / (2*a)
-        #math.sqrt instead of cmath.sqrt so that result is not of the form root + 0j 0
+        #math.sqrt instead of cmath.sqrt so that result is not of the form root + 0j
 
     elif D<0 :
         temp2 = cmath.sqrt(D) / (2*a)
+
+    else :
+        temp2=0
         
     root.append(temp1-temp2)
     root.append(temp1+temp2)
