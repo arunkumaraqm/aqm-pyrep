@@ -1,0 +1,9 @@
+def input_data() :
+    servername= input( "\nEnter Server Name : " )
+    dbname= input( "\nEnter Database Name : " )
+    username= input( "\nEnter User Name : " )
+    password= input( "\nEnter Password : " )
+
+    return "Servername = "+servername+"; Dbname = "+dbname+"; Username = "+username+"; Passwd = "+password
+
+print("Given Data : ",input_data())
