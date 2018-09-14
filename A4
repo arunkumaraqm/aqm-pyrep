@@ -1,57 +1,26 @@
 import cmath
-import math
-import sys
 
 def main() :
-    coeff=[]
-    root=[]
-    input_coeff(coeff)
-    D = compute_roots(coeff,root)
-    output_roots(root=root,Discrim=D)
-    
+
+    a,b,c = input_coeff()
+    D, root1, root2 = compute_roots(a,b,c)
+    output_roots(D, root1, root2)
+
 
 def input_coeff(coeff=[]) : #DOUBT - Not sure how else to pass a,b,c by reference
     print("For equation ax^2+bx+c, ")
-    coeff.append( float(input("\nEnter a : ")))
-    
-    if coeff[0]==0 :        #a=0 Condition
-        print("\nNot quadratic if a=0")
-        input()
-        sys.exit()
-        
-    coeff.append( float(input("\nEnter b : ")))
-    coeff.append( float(input("\nEnter c : ")))
-    
-def compute_roots(coeff=[], root=[]) :
-    a=coeff[0]
-    b=coeff[1]
-    c=coeff[2]
-    
+    a = ( float(input("\nEnter a : ")))
+
+    if a==0:        #a=0 Condition
+        print "\nNot quadratic if a=0"
+        raise SystemExit()
+
+    b = ( float(input("\nEnter b : ")))
+    c = ( float(input("\nEnter c : ")))
+    return a,b,c
+
+def compute_roots(a,b,c) :
+
     D=b*b-4*c*a
     temp1=-b/(2*a)
-
-    if D>0 :
-        temp2 = math.sqrt(D) / (2*a)
-        #math.sqrt instead of cmath.sqrt so that result is not of the form root + 0j
-
-    elif D<0 :
-        temp2 = cmath.sqrt(D) / (2*a)
-
-    else :
-        temp2=0
-        
-    root.append(temp1-temp2)
-    root.append(temp1+temp2)
-    return D
-
-def output_roots(Discrim,root=[]) :
-
-    if Discrim!=0 :
-        print("\nRoot 1 = ",root[0])
-        print("\nRoot 2 = ",root[1])
-
-    else :
-        print("\nRoot = ",root[0])
-
-
-main()
+"A7.py" 53L, 1032C                                                                       1,1           Top
