@@ -1,0 +1,18 @@
+def input_cstr():
+    s=input("Enter Server Name : ")
+    d=input("Enter Database Name : ")
+    u=input("Enter Username : ")
+    p=input("Enter Password : ")
+    return s,d,u,p
+
+def get_dict(s,d,u,p): 
+    connect_dict={'Server':s, 'Database':d, 'User':u, 'Passwd':p }
+    return connect_dict
+
+def print_dict(connect_dict):
+    for ikey, ivalue in connect_dict.items():
+        print(ikey,ivalue)
+
+
+s,d,u,p=input_cstr()
+print_dict(get_dict(s,d,u,p))
