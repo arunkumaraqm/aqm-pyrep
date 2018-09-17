@@ -1,9 +1,13 @@
 def input_data() :
-    servername= input( "\nEnter Server Name : " )
-    dbname= input( "\nEnter Database Name : " )
-    username= input( "\nEnter User Name : " )
-    password= input( "\nEnter Password : " )
+    s= input( "\nEnter Server Name : " )
+    d= input( "\nEnter Database Name : " )
+    u= input( "\nEnter Username : " )
+    p= input( "\nEnter Password : " )
 
-    return "Servername = "+servername+"; Dbname = "+dbname+"; Username = "+username+"; Passwd = "+password
+    #using format() - implicit
+    return "Servername = {} ;Database Name = {} ;Username = {} ;Password= {}" .format(s,d,u,p)
 
+    #using string modulo op
+    #return "Servername = %s ;Database Name = %s ;Username = %s ;Password= %s" %(s,d,u,p)
+    
 print("Given Data : ",input_data())
