@@ -3,10 +3,25 @@ def input_cstr():
     d=input("Enter Database Name : ")
     u=input("Enter Username : ")
     p=input("Enter Password : ")
-    return s,d,u,p
+    return "Server:%s;DBname:%s;User:%s;Passwd:%s" %(s,d,u,p)
 
-def get_dict(s,d,u,p): 
-    connect_dict={'Server':s, 'Database':d, 'User':u, 'Passwd':p }
+def get_dict(str):
+
+    semico_pos=0
+    values=[]
+
+    #Only works if none of the inputs contain ';' or ':'
+    for i in range(3):
+        colon_pos=str.find(':',semico_pos)
+        semico_pos=str.find(';',colon_pos)
+        values.append( str[colon_pos+1:semico_pos] )
+
+    #For fourth iteration
+    colon_pos=str.find(':',semico_pos)
+    values.append( str[colon_pos+1:] )
+
+    #s=val[0], d=val[1], u=val[2], p=val[3]
+    connect_dict={'Server':values[0], 'Database':values[1], 'User':values[2], 'Passwd':values[3] }
     return connect_dict
 
 def print_dict(connect_dict):
@@ -14,5 +29,4 @@ def print_dict(connect_dict):
         print(ikey,ivalue)
 
 
-s,d,u,p=input_cstr()
-print_dict(get_dict(s,d,u,p))
+print_dict(get_dict(input_cstr()))
