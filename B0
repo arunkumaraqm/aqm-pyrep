@@ -1,32 +1,45 @@
 def input_cstr():
-    s=input("Enter Server Name : ")
-    d=input("Enter Database Name : ")
-    u=input("Enter Username : ")
-    p=input("Enter Password : ")
-    return "Server:%s;DBname:%s;User:%s;Passwd:%s" %(s,d,u,p)
+	s=input("Enter Server Name : ")
+	d=input("Enter Database Name : ")
+	u=input("Enter Username : ")
+	p=input("Enter Password : ")
+	str="Server:%s;DBname:%s;User:%s;Passwd:%s" %(s,d,u,p)
+	noofinputs=4
+	yn=input("More Keys ? (Y/N) : ")
 
-def get_dict(str):
+	while yn[0]=='Y' or yn[0]=='y' : 
+		extrakey=input("\nEnter Key Name : ")
+		extraval=input("Enter Value for this Key : ")
+		str+=';'+extrakey+':'+extraval
+		noofinputs+=1
+		yn=input("Continue ? (Y/N) : ") 
 
+
+	return noofinputs,str
+
+def get_dict(noofinputs,str):
+
+    str=';'+str+';'
     semico_pos=0
-    values=[]
-
+    connect_dict={}
     #Only works if none of the inputs contain ';' or ':'
-    for i in range(3):
+
+    for i in range(noofinputs):
+
         colon_pos=str.find(':',semico_pos)
+        current_key =  str[semico_pos+1:colon_pos] 
+
         semico_pos=str.find(';',colon_pos)
-        values.append( str[colon_pos+1:semico_pos] )
+        current_value =  str[colon_pos+1:semico_pos]
 
-    #For fourth iteration
-    colon_pos=str.find(':',semico_pos)
-    values.append( str[colon_pos+1:] )
+        connect_dict.update ({ current_key : current_value })
 
-    #s=val[0], d=val[1], u=val[2], p=val[3]
-    connect_dict={'Server':values[0], 'Database':values[1], 'User':values[2], 'Passwd':values[3] }
     return connect_dict
 
 def print_dict(connect_dict):
-    for ikey, ivalue in connect_dict.items():
-        print(ikey,ivalue)
+#    for ikey, ivalue in connect_dict.items():
+#        print(ikey,ivalue)
+	print(connect_dict)
 
-
-print_dict(get_dict(input_cstr()))
+noofinputs,str= input_cstr()
+print_dict(get_dict(noofinputs,str))
