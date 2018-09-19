@@ -1,0 +1,21 @@
+def input_dict():
+    cdict={}
+    cdict['Server']   =input("Enter Server Name : ")
+    cdict['DBName']   =input("Enter Database Name : ")
+    cdict['Username'] =input("Enter Username : ")
+    cdict['Password'] =input("Enter Password : ")
+    return cdict
+
+def convert_dict_to_str (cdict):
+    str=""
+    for icur in cdict.items():
+        str+=icur[0]+':'+icur[1]+';'
+
+    return str[:-1]
+
+def main():
+    cdict=input_dict()
+    cstr=convert_dict_to_str(cdict)
+    print(cstr)
+
+main()
