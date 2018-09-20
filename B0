@@ -3,43 +3,19 @@ def input_cstr():
 	d=input("Enter Database Name : ")
 	u=input("Enter Username : ")
 	p=input("Enter Password : ")
-	str="Server:%s;DBname:%s;User:%s;Passwd:%s" %(s,d,u,p)
-	noofinputs=4
-	yn=input("More Keys ? (Y/N) : ")
+	cstr="Server:%s;DBname:%s;User:%s;Passwd:%s" %(s,d,u,p)
+	return cstr
+	
+def convert_str_to_dict(cstr):
+    cdict={}
+    for icur in cstr.split(';'):
+        keyandval = icur.split(':')
+        cdict.update({keyandval[0]:keyandval[1]})
+    return cdict
 
-	while yn[0]=='Y' or yn[0]=='y' : 
-		extrakey=input("\nEnter Key Name : ")
-		extraval=input("Enter Value for this Key : ")
-		str+=';'+extrakey+':'+extraval
-		noofinputs+=1
-		yn=input("Continue ? (Y/N) : ") 
-
-
-	return noofinputs,str
-
-def get_dict(noofinputs,str):
-
-    str=';'+str+';'
-    semico_pos=0
-    connect_dict={}
-    #Only works if none of the inputs contain ';' or ':'
-
-    for i in range(noofinputs):
-
-        colon_pos=str.find(':',semico_pos)
-        current_key =  str[semico_pos+1:colon_pos] 
-
-        semico_pos=str.find(';',colon_pos)
-        current_value =  str[colon_pos+1:semico_pos]
-
-        connect_dict.update ({ current_key : current_value })
-
-    return connect_dict
-
-def print_dict(connect_dict):
-#    for ikey, ivalue in connect_dict.items():
-#        print(ikey,ivalue)
-	print(connect_dict)
-
-noofinputs,str= input_cstr()
-print_dict(get_dict(noofinputs,str))
+def main():
+    cstr= input_cstr()
+    cdict=convert_str_to_dict(cstr)
+    print(cdict)
+    
+main()
