@@ -1,0 +1,20 @@
+class Menu:
+        def __init__(self):
+                self.m_dict={}
+        
+        def add(self, new_food, new_cost):
+                self.m_dict[new_food]=new_cost
+
+        def show(self):
+                print("\tMENU")
+                print("ITEM\t\tCOST")
+                for ifood,icost in self.m_dict.items():
+                        print(ifood,'\t\t',icost)
+
+def main():
+        m=Menu()
+        m.add('Idly',10)
+        m.add('Vada',20)
+        m.show()
+
+main()
