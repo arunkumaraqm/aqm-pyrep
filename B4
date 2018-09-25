@@ -1,0 +1,20 @@
+class Menu:
+        def __init__(self):
+                Menu.m_dict={}
+
+        def __add__(self,new_tuple): #Called by -- obj+tuple
+                Menu.m_dict[ new_tuple[0] ]= new_tuple[1] #Storing food as key, cost as value in dictionary m_dict
+
+        def __str__(self):
+                output_str="\tMENU\nITEM\t\tCOST\n\n" #output_str is a concatenation of all strings to be printed
+                for ifood,icost in Menu.m_dict.items():
+                    output_str+=ifood+'\t\t'+str(icost)+'\n'
+                return output_str
+
+def main():
+        m=Menu()
+        m+('Idly',10)
+        m+('Vada',20)
+        print(m)
+
+main()
