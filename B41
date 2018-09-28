@@ -2,10 +2,8 @@ class Menu:
     def __init__(self):
         self.mydict={}
 
-    def __getitem__(self,item):
-        new_food=item[0]
-        new_cost=item[1]
-        self.mydict[new_food]=new_cost
+    def __getitem__(self,item)
+        self.mydict[item[0]]=item[1]
 
     def __repr__(self):
         return "\nProblem with __str__"
