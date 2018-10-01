@@ -1,0 +1,29 @@
+class Menu:
+	def __init__(self):
+		self.mydict={}
+
+	def __setitem__(self,new_food,new_cost):
+
+		if new_food in self.mydict.keys():
+			raise Exception("Food item already exists")
+
+		self.mydict[new_food]=new_cost
+
+	def __repr__(self):
+		return "\nProblem with __str__"
+
+	def __str__(self):
+		output_str="FOOD\t\tCOST"
+		for food,cost in self.mydict.items():
+			output_str+="\n{}\t\t{}" .format(food,cost)
+		return output_str
+
+
+def main():
+	m=Menu()
+	m["Idly"]=10
+	m["Vada"]=20
+	m["Idly"]=30
+	print(m)
+
+main()
