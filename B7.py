@@ -19,6 +19,7 @@ class Menu:
 
 
 m=Menu()
+
 m['Idly']=10
 m['Vada']=20
 for i in m:
