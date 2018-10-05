@@ -1,0 +1,19 @@
+
+class Numbers:
+        def __init__(self):
+                self.cur=0
+                self.next=1
+
+        def genfunction(self):
+                while True:
+                        self.next, self.cur = self.next+self.cur, self.next
+                        yield(self.cur)
+
+fib=Numbers()
+limit=30
+mygenerator = fib.genfunction()
+for i in mygenerator:
+        print(i)
+        if i>limit:
+                break
+
