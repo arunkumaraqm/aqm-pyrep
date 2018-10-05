@@ -1,18 +1,24 @@
-def genfunction():
-        global next, cur
-        while True:
-                next, cur = next+cur, next
-                yield(cur)
+class Numbers:
+         def __init__(self):
+                 self.cur=0
+                 self.next=1
 
-cur, next = 0,1
-limit=30
-mygenerator = genfunction()
+         def genfunction(self):
+                 while True:
+                         self.next, self.cur = self.next+self.cur, self.next
+                         yield(self.cur)
+def main():
+        fib=Numbers()
+        limit=30
+        mygenerator = fib.genfunction()
+        for i in mygenerator:
+                print(i)
+                if i>limit:
+                        break
+                        
+main()
 
-for i in mygenerator:
-        print(i)
-        if i>limit:
-                break
-               
+
 #Why are generators better than iterators?
 #You can implement your own iterator using a python class; a generator does not need a class in python.
 #To write a python generator, you can either use a Python function or a comprehension. But for an iterator, you must use the iter() and next() functions.
