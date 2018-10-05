@@ -1,26 +1,19 @@
 class Menu:
-        def __init__(self):
-                self.mydict = {}
+		def __init__(self):
+				self.mydict = {}
 
-        def __setitem__(self, mykey, myval):
-                if mykey in self.mydict.keys():
-                        raise Exception
-                
-                self.mydict[mykey]=myval
+		def __setitem__(self, mykey, myval):
+				if mykey in self.mydict.keys():
+						raise Exception
 
-        def __iter__(self):
-                self.mykeys = self.mydict.__iter__()
-                return self
+				self.mydict[mykey]=myval
 
-        def __next__(self):
-                curkey = self.mykeys.__next__()
-                curval = self.mydict[curkey]
-                return curkey+'\t\t'+str(curval)
-
+		def __iter__(self):
+				return iter(self.mydict.items())
 
 m=Menu()
-
 m['Idly']=10
 m['Vada']=20
-for i in m:
-        print(i)
+
+for item, cost in m:
+		print(item,cost)
