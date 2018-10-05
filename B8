@@ -1,19 +1,14 @@
+def genfunction():
+        global next, cur
+        while True:
+                next, cur = next+cur, next
+                yield(cur)
 
-class Numbers:
-        def __init__(self):
-                self.cur=0
-                self.next=1
-
-        def genfunction(self):
-                while True:
-                        self.next, self.cur = self.next+self.cur, self.next
-                        yield(self.cur)
-
-fib=Numbers()
+cur, next = 0,1
 limit=30
-mygenerator = fib.genfunction()
+mygenerator = genfunction()
+
 for i in mygenerator:
         print(i)
         if i>limit:
                 break
-
