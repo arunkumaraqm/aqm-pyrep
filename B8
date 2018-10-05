@@ -12,3 +12,8 @@ for i in mygenerator:
         print(i)
         if i>limit:
                 break
+               
+#Why are generators better than iterators?
+#You can implement your own iterator using a python class; a generator does not need a class in python.
+#To write a python generator, you can either use a Python function or a comprehension. But for an iterator, you must use the iter() and next() functions.
+#Generator in python let us write fast and compact code. They are also simpler to code than do custom iterator.
