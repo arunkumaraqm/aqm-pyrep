@@ -7,9 +7,7 @@ class Numbers:
                 return self
 
         def __next__(self):
-                temp=self.next
-                self.next+=self.cur
-                self.cur=temp
+                self.next, self.cur = self.next+self.cur, self.next
                 return self.cur
 
 fib=Numbers()
