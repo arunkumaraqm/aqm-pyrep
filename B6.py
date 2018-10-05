@@ -13,7 +13,7 @@ class Numbers:
                 return self.cur
 
 fib=Numbers()
-limit=30
+limit=31
 
 for i in fib:
         print(i)
