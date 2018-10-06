@@ -26,3 +26,6 @@ def main():
 	obj.fibonacci()
 
 main()
+
+#A recursive function is a function that calls itself during its execution. 
+#This enables the function to repeat itself several times.
