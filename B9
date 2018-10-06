@@ -1,0 +1,28 @@
+class Numbers:
+	def __init__(self):
+		self.next=1
+		self.count=0
+
+	def fibonacci(self):
+		self.recfunction(1)
+
+	def recfunction(self,cur):
+		self.count+=1
+		print(cur)
+
+		if self.count==10:
+			yn=input("Continue ? : ")
+
+			if yn!='Y' and yn!='y':
+				return
+			else:
+				self.count=0
+
+		self.next, cur = cur+ self.next, self.next
+		self.recfunction(cur)
+
+def main():
+	obj=Numbers()
+	obj.fibonacci()
+
+main()
