@@ -1,3 +1,4 @@
+
 class Numbers:
          def __init__(self):
                  self.cur=0
@@ -9,13 +10,16 @@ class Numbers:
                          yield(self.cur)
 def main():
         fib=Numbers()
-        limit=30
         mygenerator = fib.genfunction()
-        for i in mygenerator:
-                print(i)
-                if i>limit:
+
+        while True:
+                for i,j in zip(mygenerator, range(10)):
+                        print(i)
+
+                yn=input("Continue ? : ")
+                if yn!='Y' and yn!='y':
                         break
-                        
+
 main()
 
 
