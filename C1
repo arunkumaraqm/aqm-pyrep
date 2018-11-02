@@ -1,0 +1,31 @@
+import os
+import xml.etree.ElementTree as et
+
+base_path = os.path.dirname(os.path.realpath(__file__))
+input_file = os.path.join(base_path, "data\\People.xml") #The name of the XML file is "People.xml"
+
+tree = et.parse(input_file)
+root = tree.getroot()
+
+for person in root.findall("./person"):
+    if person.find("name").text == "Charlie":
+        print("Charlie's ID = ", person.attrib["id"])
+
+
+#Finds the person whose promoter's client's last name is Applebee
+#I know the question says the promoter's last name and not their client's last name
+#But I decided to modify the question after analysing the XML file
+        
+for person in root.findall("./person"):
+
+    cur_name = person.find("name").text
+
+    for client in person.findall("./promoter/client"):
+        fullname = client.find("fullname").text
+        _, lastname = fullname.split()
+
+        if lastname == "Applebee":
+            print ("Name of person whose promoter's client's last name is Applebee : ", cur_name)
+            break
+        
+
